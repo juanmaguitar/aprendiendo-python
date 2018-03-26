@@ -4,12 +4,11 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+En este blog voy a ir apuntando aquellos ejemplos y descubrimientos que considero interesantes a medida que voy aprendiendo Python. Iré compartiendo explicaciones y demostraciones que intentaré sean útiles 
 
-### More Information
+- Mail: [JuanMa.Garrido@gmail.com](mailto:JuanMa.Garrido@gmail.com)
+- Twitter: [@juanmaguitar](https://twitter.com/juanmaguitar)
+- LinkedIn: [http://www.linkedin.com/in/juanmagarrido](http://www.linkedin.com/in/juanmagarrido)
+- GitHub: [https://github.com/juanmaguitar](https://github.com/juanmaguitar)
 
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+- [Apuntes de Javascript](http://apuntesjs.com)
