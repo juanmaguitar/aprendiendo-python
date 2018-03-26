@@ -1,1 +1,1 @@
-Sitemap: /aprendiendo-python/sitemap.xml
+Sitemap: /sitemap.xml
