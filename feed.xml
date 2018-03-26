@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="/aprendiendo-python/feed.xml" rel="self" type="application/atom+xml" /><link href="/aprendiendo-python/" rel="alternate" type="text/html" /><updated>2018-03-26T19:51:36+02:00</updated><id>/aprendiendo-python/</id><title type="html">Aprendiendo Python</title><subtitle>...vengo de Javascript 🧐</subtitle><entry><title type="html">Ruta y Directorio del archivo actual</title><link href="/aprendiendo-python/ruta-directorio-archivo-actual/" rel="alternate" type="text/html" title="Ruta y Directorio del archivo actual" /><published>2018-03-24T12:21:18+01:00</published><updated>2018-03-24T12:21:18+01:00</updated><id>/aprendiendo-python/ruta-directorio-archivo-actual</id><content type="html" xml:base="/aprendiendo-python/ruta-directorio-archivo-actual/">&lt;p&gt;Utilizando la variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;__file__&lt;/code&gt; podemos averiguar para cada archivo tanto el nombre del archivo en cuestion como el directorio en el que se encuentra (y su directorio padre)&lt;/p&gt;
+
+&lt;p&gt;Para ello el modulo &lt;a href=&quot;https://docs.python.org/2/library/os.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;os&lt;/code&gt;&lt;/a&gt; nos ofrece el método &lt;a href=&quot;https://docs.python.org/2/library/os.path.html#module-os.path&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;&lt;/a&gt; con una serie de métodos muy útiles para este objetivo:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://docs.python.org/2/library/os.path.html#os.path.join&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;join()&lt;/code&gt;&lt;/a&gt; → Junta trozos de rutas para generar una ruta final de manera inteligente&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://docs.python.org/2/library/os.path.html#os.path.dirname&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dirname()&lt;/code&gt;&lt;/a&gt; → Devuelve el directorio del path dado
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;os.path.dirname('/Users/juanma/PROJECTS/PYTHON/demos/test.py')&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;/Users/juanma/PROJECTS/PYTHON/demos&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://docs.python.org/2/library/os.path.html#os.path.abspath&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;abspath()&lt;/code&gt;&lt;/a&gt; → Devuelve la ruta absoluta y normalizada del path dado
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;os.path.abspath(__file__)&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;/Users/juanma/PROJECTS/PYTHON/demos/test.py&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://docs.python.org/2/library/os.path.html#os.path.realpath&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;realpath()&lt;/code&gt;&lt;/a&gt; → Devuelve la ruta canonica del archivo dado
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;os.path.realpath(__file__)&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;/Users/juanma/PROJECTS/PYTHON/demos/test.py&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;¿Qué diferencia hay entre &lt;code class=&quot;highlighter-rouge&quot;&gt;abspath&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;realpath&lt;/code&gt; si parece que producen el mismo resultado? No mucha, pero &lt;a href=&quot;https://stackoverflow.com/questions/37863476/why-use-both-os-path-abspath-and-os-path-realpath#40311142&quot;&gt;aquí&lt;/a&gt; teneis una respuesta&lt;/p&gt;
+
+&lt;p&gt;Así, este ejemplo&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;FILE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__file__&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;REALPATH&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;realpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__file__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ABSPATH&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abspath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__file__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;DIRNAME&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;realpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__file__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{} &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t\t\t\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ← __file__&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FILE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{} &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ← os.path.realpath(__file__)&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;REALPATH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{} &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ← os.path.abspath(__file__)&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ABSPATH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{} &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ← os.path.dirname(os.path.realpath(__file__))&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DIRNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Nos devolverá algo asi…&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;test.py 					 ← __file__
+/Users/juanma/PROJECTS/PYTHON/demos/test.py 	 ← os.path.realpath&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;__file__&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+/Users/juanma/PROJECTS/PYTHON/demos/test.py 	 ← os.path.abspath&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;__file__&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+/Users/juanma/PROJECTS/PYTHON/demos 		 ← os.path.dirname&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;os.path.realpath&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;__file__&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><category term="join" /><category term="dirname" /><category term="abspath" /><category term="realpath" /><category term="__file__" /><summary type="html">Utilizando la variable global __file__ podemos averiguar para cada archivo tanto el nombre del archivo en cuestion como el directorio en el que se encuentra (y su directorio padre)</summary></entry><entry><title type="html">Mostrando el contenido de globals() y locals()</title><link href="/aprendiendo-python/mostrando-globals-locals/" rel="alternate" type="text/html" title="Mostrando el contenido de globals() y locals()" /><published>2018-03-22T12:21:18+01:00</published><updated>2018-03-22T12:21:18+01:00</updated><id>/aprendiendo-python/mostrando-globals-locals</id><content type="html" xml:base="/aprendiendo-python/mostrando-globals-locals/">&lt;p&gt;Para mostrar el contenido de &lt;code class=&quot;highlighter-rouge&quot;&gt;locals()&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;globals()&lt;/code&gt; podemos hacer&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;show_globals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;## GLOBALS ##&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;globals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{0} → {1}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;show_locals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;## LOCALS ##&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;locals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{0} → {1}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;locals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;globals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;show_globals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;show_locals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;globals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;locals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Lo que nos devolverá la lista de valores de ambos &lt;code class=&quot;highlighter-rouge&quot;&gt;namespaces&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;## GLOBALS ##&lt;/span&gt;
+__name__ → __main__
+__doc__ → None
+__package__ → None
+__loader__ → &amp;lt;_frozen_importlib_external.SourceFileLoader object at 0x1084ff390&amp;gt;
+__spec__ → None
+__annotations__ → &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+__builtins__ → &amp;lt;module &lt;span class=&quot;s1&quot;&gt;'builtins'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;built-in&lt;span class=&quot;o&quot;&gt;)&amp;gt;&lt;/span&gt;
+__file__ → test5.py
+__cached__ → None
+a → 5
+show_globals → &amp;lt;&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;show_globals at 0x108483f28&amp;gt;
+show_locals → &amp;lt;&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;show_locals at 0x108ae1b70&amp;gt;
+
+&lt;span class=&quot;c&quot;&gt;## LOCALS ##&lt;/span&gt;
+a → 5&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Algunos de estos valores del namespace global tienen usos interesantes como comento en otros posts&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;recursos&quot;&gt;Recursos&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/a/47996201&quot;&gt;https://stackoverflow.com/a/47996201&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="locals" /><category term="globals" /><summary type="html">Para mostrar el contenido de locals() y globals() podemos hacer</summary></entry><entry><title type="html">Variables locales y globales</title><link href="/aprendiendo-python/entendiendo-locals-globals-con-exec/" rel="alternate" type="text/html" title="Variables locales y globales" /><published>2018-03-22T12:21:18+01:00</published><updated>2018-03-22T12:21:18+01:00</updated><id>/aprendiendo-python/entendiendo-locals-globals-con-exec</id><content type="html" xml:base="/aprendiendo-python/entendiendo-locals-globals-con-exec/">&lt;p&gt;Em Python cada archivo es un modulo que puede ser importado
+Cada modulo tendrá sus variables globales y locles&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Las variables globales seran accesibles desde cualquier función.&lt;/li&gt;
+  &lt;li&gt;Las variables locales sólo seran accesibles desde el módulo o función donde estén definidos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;La función &lt;a href=&quot;https://docs.python.org/3.5/library/functions.html#globals&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;globals()&lt;/code&gt;&lt;/a&gt; devuelve el &lt;em&gt;namespace&lt;/em&gt; global, que es la relación de elementos globales (variables y funciones) definidas para cada módulo (cada archivo) y accesible para las funciones definidas en él&lt;/p&gt;
+
+&lt;p&gt;La función &lt;a href=&quot;https://docs.python.org/3.5/library/functions.html#locals&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;locals()&lt;/code&gt;&lt;/a&gt; devuelve el &lt;em&gt;namespace&lt;/em&gt; local, que es la relación de elementos globales (variables y funciones) definidas para una función en concreto&lt;/p&gt;
+
+&lt;h2 id=&quot;ejemplo1&quot;&gt;Ejemplo1&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+
+&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;I love Paris in the summer!&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;La variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;msg&lt;/code&gt; se define fuera (global). Al ejecutar &lt;code class=&quot;highlighter-rouge&quot;&gt;f()&lt;/code&gt; busca un &lt;code class=&quot;highlighter-rouge&quot;&gt;msg&lt;/code&gt; local y como no lo encuentra utiliza el &lt;code class=&quot;highlighter-rouge&quot;&gt;msg&lt;/code&gt; global  (&lt;code class=&quot;highlighter-rouge&quot;&gt;I love Paris in the summer!&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h2 id=&quot;ejemplo2&quot;&gt;Ejemplo2&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;I love London!&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;I love Paris!&quot;&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;La variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;msg&lt;/code&gt; se define fuera (global). Al ejecutar &lt;code class=&quot;highlighter-rouge&quot;&gt;f()&lt;/code&gt; busca un &lt;code class=&quot;highlighter-rouge&quot;&gt;msg&lt;/code&gt; local y como lo encuentra utiliza el valor del &lt;code class=&quot;highlighter-rouge&quot;&gt;msg&lt;/code&gt; local (&lt;code class=&quot;highlighter-rouge&quot;&gt;I love London!&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h2 id=&quot;ejemplo3&quot;&gt;Ejemplo3&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Only in spring, but London is great as well!&quot;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;I am looking for a course in Paris!&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Tambien podemos especificar (con &lt;code class=&quot;highlighter-rouge&quot;&gt;global&lt;/code&gt;) dentro de la función &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; que queremos utilizar la variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;msg&lt;/code&gt;. Al ejecutar &lt;code class=&quot;highlighter-rouge&quot;&gt;f()&lt;/code&gt; utilizará la variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;msg&lt;/code&gt;, tanto para imprimir su valor como para asignarle nuevos valores&lt;/p&gt;
+
+&lt;h2 id=&quot;ejemplo4&quot;&gt;Ejemplo4&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Las variables globales se limitan a cada modulo. Aunque en otro modulo hayamos definido la variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;msg&lt;/code&gt;, ésta variable no existe para el resto. Si intentamos utilizar esta variable sin haberla definido, python lanzará un error&lt;/p&gt;
+
+&lt;h2 id=&quot;ejemplo5&quot;&gt;Ejemplo5&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;example5.py&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;example51&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;example51.py&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Las variables globales se limitan a cada modulo. Esto se aplica tambien para cuando importamos una función. Si esta función importada no tiene definida la variable en su archivo, dará error&lt;/p&gt;
+
+&lt;h2 id=&quot;ejemplo6&quot;&gt;Ejemplo6&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;example6.py&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;example61&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;example61.py&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;example62&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;example62.py&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Sin embargo, si que podemos importar sin problema variables y funciones definidas en otros archivos para ejecutarlos en otro lugar&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;br /&gt;
+Aqui se pueden todos estos ejemplos testeados…&lt;/p&gt;
+
+&lt;iframe height=&quot;400px&quot; width=&quot;100%&quot; src=&quot;https://repl.it/repls/ImperturbableDisloyalRule?lite=true&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; sandbox=&quot;allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;recursos&quot;&gt;Recursos&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gist.github.com/dean0x7d/df5ce97e4a1a05be4d56d1378726ff92&quot;&gt;https://gist.github.com/dean0x7d/df5ce97e4a1a05be4d56d1378726ff92&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="locals" /><category term="globals" /><category term="variables" /><category term="scope" /><category term="namespace" /><summary type="html">Em Python cada archivo es un modulo que puede ser importado Cada modulo tendrá sus variables globales y locles Las variables globales seran accesibles desde cualquier función. Las variables locales sólo seran accesibles desde el módulo o función donde estén definidos.</summary></entry><entry><title type="html">Deteccion llamadas como módulo con __name__</title><link href="/aprendiendo-python/deteccion-modulo-__name__/" rel="alternate" type="text/html" title="Deteccion llamadas como módulo con __name__" /><published>2018-03-20T12:21:18+01:00</published><updated>2018-03-20T12:21:18+01:00</updated><id>/aprendiendo-python/deteccion-modulo-__name__</id><content type="html" xml:base="/aprendiendo-python/deteccion-modulo-__name__/">&lt;p&gt;Un tema interesante en python es el valor de la variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;__name__&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;A cada archivo se le asigna un valor a la variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;__name__&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'This program is being run by itself'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'I am being imported from another module'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Si el archivo se llama directamente adquiere el valor &lt;code class=&quot;highlighter-rouge&quot;&gt;__main__&lt;/code&gt;, si no adquiere otro valor&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;test.py&lt;/em&gt;&lt;/strong&gt;
+&lt;img src=&quot;/aprendiendo-python/assets/2018-03-20-deteccion-modulo-__name__/name-main.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Con esta lógica podemos detectar si un archivo se ha llamado directamente o como módulo&lt;/p&gt;
+
+&lt;div class=&quot;myvideo&quot;&gt;
+   &lt;video style=&quot;display:block; width:100%; height:auto;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
+       &lt;source src=&quot;/aprendiendo-python/assets/2018-03-20-deteccion-modulo-__name__/python-main.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+   &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;recursos&quot;&gt;Recursos&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ibiblio.org/g2swap/byteofpython/read/module-name.html&quot;&gt;http://ibiblio.org/g2swap/byteofpython/read/module-name.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/library/__main__.html&quot;&gt;https://docs.python.org/3/library/__main__.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="modulos" /><category term="deteccion" /><category term="__main__" /><summary type="html">Un tema interesante en python es el valor de la variable global __name__</summary></entry></feed>

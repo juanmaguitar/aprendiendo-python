@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>/aprendiendo-python/deteccion-modulo-__name__/</loc>
+<lastmod>2018-03-20T12:21:18+01:00</lastmod>
+</url>
+<url>
+<loc>/aprendiendo-python/entendiendo-locals-globals-con-exec/</loc>
+<lastmod>2018-03-22T12:21:18+01:00</lastmod>
+</url>
+<url>
+<loc>/aprendiendo-python/mostrando-globals-locals/</loc>
+<lastmod>2018-03-22T12:21:18+01:00</lastmod>
+</url>
+<url>
+<loc>/aprendiendo-python/ruta-directorio-archivo-actual/</loc>
+<lastmod>2018-03-24T12:21:18+01:00</lastmod>
+</url>
+<url>
+<loc>/aprendiendo-python/404/</loc>
+</url>
+<url>
+<loc>/aprendiendo-python/about/</loc>
+</url>
+<url>
+<loc>/aprendiendo-python/archive/</loc>
+</url>
+<url>
+<loc>/aprendiendo-python/tags/</loc>
+</url>
+<url>
+<loc>/aprendiendo-python/</loc>
+</url>
+</urlset>
