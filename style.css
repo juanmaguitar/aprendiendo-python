@@ -910,3 +910,7 @@ code.highlighter-rouge {
   content: "";
   margin: 0;
 }
+
+.post .entry a {
+  border-bottom: 1px solid #1b6ec2;
+}
