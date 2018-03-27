@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Leyendo y Escribiendo archivos"
 date:   2018-03-25 13:21:18 +0200
 categories: jekyll update
@@ -10,7 +11,7 @@ Para leer o escribir archivos en python tenemos que abrir archivos en diferentes
 
 Para abrir archivos utilizamos el método [`open()`](https://docs.python.org/3.5/library/functions.html#open)
 
-El método `open()` devuelve un `file object` que dependerá del modo utilizado para abrir el archivo
+El método `open()` devuelve un `file object` (llamado _file handle_) que dependerá del modo utilizado para abrir el archivo
 
 - Cuando abrimos un archivo en **modo texto**  (`w`, `r`, `wt`, `rt`, etc...) devuelve una instancia de una subclase de [**`io.TextIOBase`**](https://docs.python.org/3.5/library/io.html#io.TextIOBase) (clase base para streams de texto). 
 

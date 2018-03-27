@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Ruta y Directorio del archivo actual"
 date:   2018-03-24 13:21:18 +0200
 categories: jekyll update

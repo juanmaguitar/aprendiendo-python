@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Variables locales y globales"
 date:   2018-03-22 13:21:18 +0200
 categories: jekyll update

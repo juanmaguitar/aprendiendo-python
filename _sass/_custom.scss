@@ -1,0 +1,9 @@
+.share_buttons ul {
+  > li {
+    margin: 0;
+    &:before {
+      content: "";
+      margin:0;
+    }
+  }
+}

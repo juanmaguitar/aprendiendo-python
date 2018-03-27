@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Deteccion llamadas como módulo con __name__"
 date:   2018-03-20 13:21:18 +0200
 categories: jekyll update
