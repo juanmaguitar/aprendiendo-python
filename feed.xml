@@ -1,4 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-03-27T01:07:24+02:00</updated><id>/</id><title type="html">Aprendiendo Python</title><subtitle>...vengo de Javascript 🧐</subtitle><entry><title type="html">Ruta y Directorio del archivo actual</title><link href="/ruta-directorio-archivo-actual/" rel="alternate" type="text/html" title="Ruta y Directorio del archivo actual" /><published>2018-03-24T12:21:18+01:00</published><updated>2018-03-24T12:21:18+01:00</updated><id>/ruta-directorio-archivo-actual</id><content type="html" xml:base="/ruta-directorio-archivo-actual/">&lt;p&gt;Utilizando la variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;__file__&lt;/code&gt; podemos averiguar para cada archivo tanto el nombre del archivo en cuestion como el directorio en el que se encuentra (y su directorio padre)&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-03-27T13:50:53+02:00</updated><id>http://localhost:4000/</id><title type="html">Aprendiendo Python</title><subtitle>...vengo de Javascript 🧐</subtitle><entry><title type="html">Leyendo y Escribiendo archivos</title><link href="http://localhost:4000/leyendo-escribiendo-archivos/" rel="alternate" type="text/html" title="Leyendo y Escribiendo archivos" /><published>2018-03-25T13:21:18+02:00</published><updated>2018-03-25T13:21:18+02:00</updated><id>http://localhost:4000/leyendo-escribiendo-archivos</id><content type="html" xml:base="http://localhost:4000/leyendo-escribiendo-archivos/">&lt;p&gt;Para leer o escribir archivos en python tenemos que abrir archivos en diferentes modos según la acción que queramos (lectura, escritura…)&lt;/p&gt;
+
+&lt;p&gt;Para abrir archivos utilizamos el método &lt;a href=&quot;https://docs.python.org/3.5/library/functions.html#open&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;open()&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;El método &lt;code class=&quot;highlighter-rouge&quot;&gt;open()&lt;/code&gt; devuelve un &lt;code class=&quot;highlighter-rouge&quot;&gt;file object&lt;/code&gt; que dependerá del modo utilizado para abrir el archivo&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Cuando abrimos un archivo en &lt;strong&gt;modo texto&lt;/strong&gt;  (&lt;code class=&quot;highlighter-rouge&quot;&gt;w&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;r&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;wt&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;rt&lt;/code&gt;, etc…) devuelve una instancia de una subclase de &lt;a href=&quot;https://docs.python.org/3.5/library/io.html#io.TextIOBase&quot;&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;io.TextIOBase&lt;/code&gt;&lt;/strong&gt;&lt;/a&gt; (clase base para streams de texto).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Cuando abrimos un archivo en &lt;strong&gt;modo binario&lt;/strong&gt; devuelve una instancia de una subclase de &lt;a href=&quot;https://docs.python.org/3.5/library/io.html#io.BufferedIOBase&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;io.BufferedIOBase&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;leer-archivos&quot;&gt;Leer Archivos&lt;/h2&gt;
+
+&lt;p&gt;Al abrir un archivo en modo lectura, se nos devuelve un objeto con acceso a métodos tales como:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3.5/library/io.html#io.BufferedIOBase&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;read(size)&lt;/code&gt;&lt;/a&gt; → Lee el archivo y devuelve un &lt;em&gt;string&lt;/em&gt; (&lt;a href=&quot;https://docs.python.org/3.5/library/stdtypes.html#str&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;str&lt;/code&gt;&lt;/a&gt;) del stream con un máximo de &lt;code class=&quot;highlighter-rouge&quot;&gt;size&lt;/code&gt; caracteres. Si &lt;code class=&quot;highlighter-rouge&quot;&gt;size&lt;/code&gt; está vacio devuelve hasta &lt;code class=&quot;highlighter-rouge&quot;&gt;EOF&lt;/code&gt; (end of file)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3.5/library/io.html#io.TextIOBase.readline&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;readline(size)&lt;/code&gt;&lt;/a&gt; → Lee el archivo hasta un final de linea o de archivo y devuelve un &lt;em&gt;string&lt;/em&gt; (&lt;a href=&quot;https://docs.python.org/3.5/library/stdtypes.html#str&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;str&lt;/code&gt;&lt;/a&gt;). Con &lt;code class=&quot;highlighter-rouge&quot;&gt;size&lt;/code&gt; fijamos el máximo de caracteres devueltos&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3.5/library/io.html#io.IOBase.readlines&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;readlines(hint)&lt;/code&gt;&lt;/a&gt; → Devuelve una lista de lineas desde el stream&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;data.txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;lines&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/home/ubuntu/workspace/files/relative_data.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para obtener las lineas de un archivo podemos hacer&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/home/ubuntu/workspace/files/relative_data.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;lines&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readlines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ['This is my first file\n', 'This file\n', 'contains three lines\n']&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Aunque tambien podemos hacer…&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;f = open('data.txt', 'r')
+for line in f:
+    print(line)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Cuando abrimos un archivo en modo, se genera un cursor que va cambiando su posición a medida que operamos con el archivo&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;test.txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'utf-8'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;# read the first 4 data → 'This'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;# read the next 4 data → ' is '&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;# read in the rest till end of file → 'my first file\nThis file\ncontains three lines\n'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# further reading returns empty sting&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Podemos cambiar la posición del cursor con el método &lt;a href=&quot;https://docs.python.org/3.5/library/io.html#io.IOBase.seek&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;seek()&lt;/code&gt;&lt;/a&gt; o averiguar su posición con el método &lt;a href=&quot;https://docs.python.org/3.5/library/io.html#io.IOBase.tell&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tell()&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;escribir-archivos&quot;&gt;Escribir Archivos&lt;/h2&gt;
+
+&lt;p&gt;Al abrir un archivo en modo lectura, se nos devuelve un objeto con acceso a métodos tales como:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3.5/library/io.html#io.TextIOBase.write&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;write(s)&lt;/code&gt;&lt;/a&gt; → Escribe el string &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt; en el stream y devuelve el número de caracteres escritos&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3.5/library/io.html#io.IOBase.writelines&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;writelines(lines)&lt;/code&gt;&lt;/a&gt; → Escribe una lista de lineas (separadas por &lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;) en el stream&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'newfile.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;lines&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Hello'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'World'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Welcome'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'To'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'File IO'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;writelines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;modos-de-apertura-de-archivos&quot;&gt;Modos de apertura de archivos&lt;/h2&gt;
+
+&lt;h3 id=&quot;modos-básicos&quot;&gt;Modos Básicos&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;r&lt;/code&gt; → (por defecto) Abre un archivo para lectura&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;w&lt;/code&gt; → Abre un archivo para escritura. Crear un nuevo archivo si no existe o lo sobrescribe si ya existe&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; → Abre un archivo para añadir texto al final del archivo si ya existe. Si no existe lo crea.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;modos-extra&quot;&gt;Modos Extra&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;	→ Abre un archivo para creación exclusiva. Si el archivo ya existe la operación falla.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;t&lt;/code&gt;	→ Abre un archivo en modo texto. (default)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;modos-combinados&quot;&gt;Modos Combinados&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;rb&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;wb&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ab&lt;/code&gt;) → Abre archivo en modo binario&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; → Abre archivo para actualización (lectura y escritura)
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;r+&lt;/code&gt; → lectura/escritura (si el archivo no existe, lanzará un error. Si existe sobrescribe el archivo)&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;w+&lt;/code&gt; → lectura/escritura (si el archivo no existe, se crea. Si existe sobrescribe el archivo)&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;a+&lt;/code&gt; → lectura/añadir (si el archivo no existe, se crea. Si existe añade el contenido al final)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;recursos&quot;&gt;Recursos&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.programiz.com/python-programming/file-operation&quot;&gt;https://www.programiz.com/python-programming/file-operation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="read" /><category term="write" /><category term="open" /><category term="readline" /><category term="writelines" /><summary type="html">Para leer o escribir archivos en python tenemos que abrir archivos en diferentes modos según la acción que queramos (lectura, escritura…)</summary></entry><entry><title type="html">Ruta y Directorio del archivo actual</title><link href="http://localhost:4000/ruta-directorio-archivo-actual/" rel="alternate" type="text/html" title="Ruta y Directorio del archivo actual" /><published>2018-03-24T12:21:18+01:00</published><updated>2018-03-24T12:21:18+01:00</updated><id>http://localhost:4000/ruta-directorio-archivo-actual</id><content type="html" xml:base="http://localhost:4000/ruta-directorio-archivo-actual/">&lt;p&gt;Utilizando la variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;__file__&lt;/code&gt; podemos averiguar para cada archivo tanto el nombre del archivo en cuestion como el directorio en el que se encuentra (y su directorio padre)&lt;/p&gt;
 
 &lt;p&gt;Para ello el modulo &lt;a href=&quot;https://docs.python.org/2/library/os.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;os&lt;/code&gt;&lt;/a&gt; nos ofrece el método &lt;a href=&quot;https://docs.python.org/2/library/os.path.html#module-os.path&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;&lt;/a&gt; con una serie de métodos muy útiles para este objetivo:&lt;/p&gt;
 
@@ -42,7 +147,7 @@
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;test.py 					 ← __file__
 /Users/juanma/PROJECTS/PYTHON/demos/test.py 	 ← os.path.realpath&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;__file__&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 /Users/juanma/PROJECTS/PYTHON/demos/test.py 	 ← os.path.abspath&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;__file__&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-/Users/juanma/PROJECTS/PYTHON/demos 		 ← os.path.dirname&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;os.path.realpath&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;__file__&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><category term="join" /><category term="dirname" /><category term="abspath" /><category term="realpath" /><category term="__file__" /><summary type="html">Utilizando la variable global __file__ podemos averiguar para cada archivo tanto el nombre del archivo en cuestion como el directorio en el que se encuentra (y su directorio padre)</summary></entry><entry><title type="html">Mostrando el contenido de globals() y locals()</title><link href="/mostrando-globals-locals/" rel="alternate" type="text/html" title="Mostrando el contenido de globals() y locals()" /><published>2018-03-22T12:21:18+01:00</published><updated>2018-03-22T12:21:18+01:00</updated><id>/mostrando-globals-locals</id><content type="html" xml:base="/mostrando-globals-locals/">&lt;p&gt;Para mostrar el contenido de &lt;code class=&quot;highlighter-rouge&quot;&gt;locals()&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;globals()&lt;/code&gt; podemos hacer&lt;/p&gt;
+/Users/juanma/PROJECTS/PYTHON/demos 		 ← os.path.dirname&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;os.path.realpath&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;__file__&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><category term="join" /><category term="dirname" /><category term="abspath" /><category term="realpath" /><category term="__file__" /><summary type="html">Utilizando la variable global __file__ podemos averiguar para cada archivo tanto el nombre del archivo en cuestion como el directorio en el que se encuentra (y su directorio padre)</summary></entry><entry><title type="html">Mostrando el contenido de globals() y locals()</title><link href="http://localhost:4000/mostrando-globals-locals/" rel="alternate" type="text/html" title="Mostrando el contenido de globals() y locals()" /><published>2018-03-22T12:21:18+01:00</published><updated>2018-03-22T12:21:18+01:00</updated><id>http://localhost:4000/mostrando-globals-locals</id><content type="html" xml:base="http://localhost:4000/mostrando-globals-locals/">&lt;p&gt;Para mostrar el contenido de &lt;code class=&quot;highlighter-rouge&quot;&gt;locals()&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;globals()&lt;/code&gt; podemos hacer&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
 
@@ -90,7 +195,7 @@ a → 5&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/a/47996201&quot;&gt;https://stackoverflow.com/a/47996201&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="locals" /><category term="globals" /><summary type="html">Para mostrar el contenido de locals() y globals() podemos hacer</summary></entry><entry><title type="html">Variables locales y globales</title><link href="/entendiendo-locals-globals-con-exec/" rel="alternate" type="text/html" title="Variables locales y globales" /><published>2018-03-22T12:21:18+01:00</published><updated>2018-03-22T12:21:18+01:00</updated><id>/entendiendo-locals-globals-con-exec</id><content type="html" xml:base="/entendiendo-locals-globals-con-exec/">&lt;p&gt;Em Python cada archivo es un modulo que puede ser importado
+&lt;/ul&gt;</content><author><name></name></author><category term="locals" /><category term="globals" /><summary type="html">Para mostrar el contenido de locals() y globals() podemos hacer</summary></entry><entry><title type="html">Variables locales y globales</title><link href="http://localhost:4000/entendiendo-locals-globals-con-exec/" rel="alternate" type="text/html" title="Variables locales y globales" /><published>2018-03-22T12:21:18+01:00</published><updated>2018-03-22T12:21:18+01:00</updated><id>http://localhost:4000/entendiendo-locals-globals-con-exec</id><content type="html" xml:base="http://localhost:4000/entendiendo-locals-globals-con-exec/">&lt;p&gt;Em Python cada archivo es un modulo que puede ser importado
 Cada modulo tendrá sus variables globales y locles&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Las variables globales seran accesibles desde cualquier función.&lt;/li&gt;
@@ -187,7 +292,7 @@ Aqui se pueden todos estos ejemplos testeados…&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://gist.github.com/dean0x7d/df5ce97e4a1a05be4d56d1378726ff92&quot;&gt;https://gist.github.com/dean0x7d/df5ce97e4a1a05be4d56d1378726ff92&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="locals" /><category term="globals" /><category term="variables" /><category term="scope" /><category term="namespace" /><summary type="html">Em Python cada archivo es un modulo que puede ser importado Cada modulo tendrá sus variables globales y locles Las variables globales seran accesibles desde cualquier función. Las variables locales sólo seran accesibles desde el módulo o función donde estén definidos.</summary></entry><entry><title type="html">Deteccion llamadas como módulo con __name__</title><link href="/deteccion-modulo-__name__/" rel="alternate" type="text/html" title="Deteccion llamadas como módulo con __name__" /><published>2018-03-20T12:21:18+01:00</published><updated>2018-03-20T12:21:18+01:00</updated><id>/deteccion-modulo-__name__</id><content type="html" xml:base="/deteccion-modulo-__name__/">&lt;p&gt;Un tema interesante en python es el valor de la variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;__name__&lt;/code&gt;&lt;/p&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="locals" /><category term="globals" /><category term="variables" /><category term="scope" /><category term="namespace" /><summary type="html">Em Python cada archivo es un modulo que puede ser importado Cada modulo tendrá sus variables globales y locles Las variables globales seran accesibles desde cualquier función. Las variables locales sólo seran accesibles desde el módulo o función donde estén definidos.</summary></entry><entry><title type="html">Deteccion llamadas como módulo con __name__</title><link href="http://localhost:4000/deteccion-modulo-__name__/" rel="alternate" type="text/html" title="Deteccion llamadas como módulo con __name__" /><published>2018-03-20T12:21:18+01:00</published><updated>2018-03-20T12:21:18+01:00</updated><id>http://localhost:4000/deteccion-modulo-__name__</id><content type="html" xml:base="http://localhost:4000/deteccion-modulo-__name__/">&lt;p&gt;Un tema interesante en python es el valor de la variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;__name__&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;A cada archivo se le asigna un valor a la variable global &lt;code class=&quot;highlighter-rouge&quot;&gt;__name__&lt;/code&gt;&lt;/p&gt;
 
@@ -199,13 +304,13 @@ Aqui se pueden todos estos ejemplos testeados…&lt;/p&gt;
 &lt;p&gt;Si el archivo se llama directamente adquiere el valor &lt;code class=&quot;highlighter-rouge&quot;&gt;__main__&lt;/code&gt;, si no adquiere otro valor&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;test.py&lt;/em&gt;&lt;/strong&gt;
-&lt;img src=&quot;/assets/2018-03-20-deteccion-modulo-__name__/name-main.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://localhost:4000/assets/2018-03-20-deteccion-modulo-__name__/name-main.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Con esta lógica podemos detectar si un archivo se ha llamado directamente o como módulo&lt;/p&gt;
 
 &lt;div class=&quot;myvideo&quot;&gt;
    &lt;video style=&quot;display:block; width:100%; height:auto;&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;loop&quot;&gt;
-       &lt;source src=&quot;/assets/2018-03-20-deteccion-modulo-__name__/python-main.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+       &lt;source src=&quot;http://localhost:4000/assets/2018-03-20-deteccion-modulo-__name__/python-main.mp4&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
 &lt;/div&gt;
 
