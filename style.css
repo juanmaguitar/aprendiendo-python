@@ -903,3 +903,10 @@ code.highlighter-rouge {
 }
 
 /* Literal.Number.Integer.Long */
+.share_buttons ul > li {
+  margin: 0;
+}
+.share_buttons ul > li:before {
+  content: "";
+  margin: 0;
+}
